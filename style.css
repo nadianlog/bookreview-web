@@ -2,17 +2,18 @@
 
 body {
   font-family: 'Poppins', sans-serif;
-  background-color: #f9f9ff;
-  color: #333;
+  background-color: #ffffff;  /* putih bersih */
+  color: #222;                /* teks gelap */
   margin: 0;
   padding: 0;
   transition: background-color 0.3s, color 0.3s;
 }
 
+/* HEADER */
 header {
   text-align: center;
-  background-color: #6c63ff;
-  color: white;
+  background-color: #a5b4fc;  /* ungu pastel lembut */
+  color: #222;
   padding: 25px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
@@ -22,7 +23,7 @@ header {
   padding: 10px;
   margin-top: 10px;
   border-radius: 8px;
-  border: none;
+  border: 1px solid #aaa;
 }
 
 #themeToggle {
@@ -33,11 +34,12 @@ header {
   font-size: 1.5em;
 }
 
+/* CARD BUKU */
 .book {
   display: flex;
   align-items: center;
   gap: 20px;
-  background: white;
+  background: #fff;
   margin: 20px auto;
   padding: 20px;
   border-radius: 12px;
@@ -73,6 +75,7 @@ header {
   color: #555;
 }
 
+/* REVIEW */
 .review {
   background: #eef0ff;
   padding: 10px;
@@ -80,11 +83,12 @@ header {
   margin-top: 10px;
 }
 
+/* BUTTON */
 button {
-  background-color: #6c63ff;
-  color: white;
+  background-color: #a5b4fc;
+  color: #222;
   padding: 10px 20px;
-  border: none;
+  border: 1px solid #888;
   border-radius: 8px;
   cursor: pointer;
   font-size: 14px;
@@ -92,9 +96,10 @@ button {
 }
 
 button:hover {
-  background-color: #5a54e3;
+  background-color: #c7d2fe;
 }
 
+/* FOOTER */
 footer {
   text-align: center;
   padding: 20px;
@@ -102,7 +107,7 @@ footer {
   color: #666;
 }
 
-/* --- Tema Gelap --- */
+/* 🌙 --- Tema Gelap --- */
 body.dark {
   background-color: #1f1f1f;
   color: #f0f0f0;
@@ -110,6 +115,7 @@ body.dark {
 
 body.dark header {
   background-color: #333;
+  color: #fff;
 }
 
 body.dark .book {
