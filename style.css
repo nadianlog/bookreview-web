@@ -1,9 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
 body {
   font-family: 'Poppins', sans-serif;
   background-color: #f9f9ff;
   color: #333;
   margin: 0;
   padding: 0;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 header {
@@ -14,17 +17,20 @@ header {
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
-#search {
-  text-align: center;
-  margin: 25px;
+#searchInput {
+  width: 60%;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 8px;
+  border: none;
 }
 
-#search input {
-  width: 80%;
-  padding: 12px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
+#themeToggle {
+  margin-left: 10px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5em;
 }
 
 .book {
@@ -82,6 +88,7 @@ button {
   border-radius: 8px;
   cursor: pointer;
   font-size: 14px;
+  transition: 0.3s;
 }
 
 button:hover {
@@ -94,15 +101,28 @@ footer {
   font-size: 14px;
   color: #666;
 }
-// Tombol untuk ganti tema
-document.getElementById('themeToggle').onclick = () => {
-  document.body.classList.toggle('dark');
 
-  // Ganti ikon tombol biar interaktif
-  const icon = document.getElementById('themeToggle');
-  if (document.body.classList.contains('dark')) {
-    icon.textContent = '☀️';
-  } else {
-    icon.textContent = '🌙';
-  }
+/* --- Tema Gelap --- */
+body.dark {
+  background-color: #1f1f1f;
+  color: #f0f0f0;
+}
 
+body.dark header {
+  background-color: #333;
+}
+
+body.dark .book {
+  background-color: #2a2a2a;
+  border: 1px solid #444;
+  color: #fff;
+}
+
+body.dark button {
+  background-color: #555;
+  color: #eee;
+}
+
+body.dark button:hover {
+  background-color: #777;
+}
