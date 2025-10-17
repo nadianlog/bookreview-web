@@ -94,6 +94,15 @@ footer {
   font-size: 14px;
   color: #666;
 }
+// Tombol untuk ganti tema
 document.getElementById('themeToggle').onclick = () => {
   document.body.classList.toggle('dark');
-}
+
+  // Ganti ikon tombol biar interaktif
+  const icon = document.getElementById('themeToggle');
+  if (document.body.classList.contains('dark')) {
+    icon.textContent = '☀️';
+  } else {
+    icon.textContent = '🌙';
+  }
+
