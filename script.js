@@ -47,6 +47,7 @@ window.onload = function() {
   displayBooks(books);
 };
 
+// tampilkan semua buku
 function displayBooks(bookArray) {
   const container = document.getElementById('book-container');
   container.innerHTML = '';
@@ -88,20 +89,16 @@ function addReview() {
   displayBooks(books);
 }
 
+// fungsi pencarian
 function searchBook() {
   const input = document.getElementById('searchInput').value.toLowerCase();
   const filtered = books.filter(b => b.title.toLowerCase().includes(input));
   displayBooks(filtered);
 }
-// Tombol untuk ganti tema
+
+// Tombol ganti tema 🌙☀️
 document.getElementById('themeToggle').onclick = () => {
   document.body.classList.toggle('dark');
-
-  // Ganti ikon tombol biar interaktif
   const icon = document.getElementById('themeToggle');
-  if (document.body.classList.contains('dark')) {
-    icon.textContent = '☀️';
-  } else {
-    icon.textContent = '🌙';
-  }
-
+  icon.textContent = document.body.classList.contains('dark') ? '☀️' : '🌙';
+};
