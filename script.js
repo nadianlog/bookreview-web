@@ -1,10 +1,11 @@
+// script (1).js - Kode yang sudah diperbaiki
 const books = [
   { 
     id: 1, 
-    title: "Laskar Pelangi", 
-    author: "Andrea Hirata",
+    title: "Laut Bercerita", 
+    author: "Lelia S. Chudori",
     desc: "Perjalanan anak-anak Belitung dalam mengejar pendidikan di tengah keterbatasan.",
-    cover: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1348867331i/1524183.jpg",
+    cover: "The Sea Speaks His Name (English Version).jpeg",
     reviews: []
   },
   { 
@@ -43,10 +44,6 @@ const books = [
 
 let selectedBook = null;
 
-window.onload = function() {
-  displayBooks(books);
-};
-
 // tampilkan semua buku
 function displayBooks(bookArray) {
   const container = document.getElementById('book-container');
@@ -54,6 +51,7 @@ function displayBooks(bookArray) {
   bookArray.forEach(book => {
     const div = document.createElement('div');
     div.classList.add('book');
+    // Tambahkan id ke div review biar lebih gampang di-update tanpa redraw semua buku
     div.innerHTML = `
       <img src="${book.cover}" alt="${book.title}">
       <div class="book-details">
@@ -86,19 +84,31 @@ function addReview() {
   selectedBook.reviews.push({ text, rating });
   document.getElementById('reviewText').value = '';
   document.getElementById('rating').value = '';
+  // Gak perlu panggil displayBooks(books) lagi kalau cuma mau update review, tapi 
+  // buat simpelnya saat ini, ini OK. Tapi idealnya cuma update DOM review-nya aja.
   displayBooks(books);
 }
 
 // fungsi pencarian
 function searchBook() {
   const input = document.getElementById('searchInput').value.toLowerCase();
-  const filtered = books.filter(b => b.title.toLowerCase().includes(input));
+  // Filter berdasarkan judul ATAU penulis biar lebih mantap
+  const filtered = books.filter(b => 
+    b.title.toLowerCase().includes(input) || 
+    b.author.toLowerCase().includes(input)
+  );
   displayBooks(filtered);
 }
 
-// Tombol ganti tema 🌙☀️
-document.getElementById('themeToggle').onclick = () => {
-  document.body.classList.toggle('dark');
-  const icon = document.getElementById('themeToggle');
-  icon.textContent = document.body.classList.contains('dark') ? '☀️' : '🌙';
-};
+
+// Semua kode yang butuh DOM ready harus ada di sini:
+window.onload = function() {
+  displayBooks(books); // Tampilkan buku saat halaman pertama kali dibuka
+
+  // Tombol ganti tema 🌙☀️ harus di dalam window.onload
+  document.getElementById('themeToggle').onclick = () => {
+    document.body.classList.toggle('dark');
+    const icon = document.getElementById('themeToggle');
+    icon.textContent = document.body.classList.contains('dark') ? '☀️' : '🌙';
+  };
+}; // <-- Penutup yang BENAR untuk window.onload
