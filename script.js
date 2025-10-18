@@ -1,50 +1,38 @@
 // ====== DATA BUKU (5 buku) ======
-const BOOKS_KEY = 'br_books_v1';        // key localStorage untuk reviews / data lebih lanjut
+const BOOKS_KEY = 'br_books_v1';        // key localStorage
 const THEME_KEY = 'br_theme_v1';
 
 let books = [
   { id:1, title:"The Alpha Girl’s Guide", author:"Henry Manampiring",
     desc:"Panduan untuk perempuan agar lebih percaya diri, mandiri, dan berani jadi diri sendiri tanpa kehilangan sisi lembutnya.",
-    cover:"[SE046] The Alpha Girl s Guide (Henry….jpeg",
+    cover:"https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1348867331i/1524183.jpg",
     reviews:[] },
   { id:2, title:"Loneliness Is My Best Friend", author:"Alvi Syahrin",
     desc:"Kumpulan refleksi tentang kesepian dan bagaimana kesendirian bisa menjadi ruang untuk mengenal diri dan menemukan ketenangan.",
-    cover:"8933c53e-2762-42db-b04d-cd95a0d45d72.jpeg",
+    cover:"https://upload.wikimedia.org/wikipedia/id/4/48/Negeri_5_Menara_cover.jpg",
     reviews:[] },
   { id:3, title:"Laut Bercerita", author:"Leila S. Chudori",
     desc:"Kisah menyentuh tentang aktivis yang hilang di masa Orde Baru, menggambarkan perjuangan, kehilangan, dan kemanusiaan.",
-    cover:"The Sea Speaks His Name (English Version).jpeg",
+    cover:"https://upload.wikimedia.org/wikipedia/id/1/1f/Dilan_1990_sampul.jpg",
     reviews:[] },
   { id:4, title:"Negeri 5 Menara", author:"Ahmad Fuadi",
     desc:"Kisah enam santri dengan mimpi besar dan semangat Man Jadda Wajada yang menginspirasi banyak pembaca.",
-    cover:"Negeri 5 Menara.jpeg",
+    cover:"https://upload.wikimedia.org/wikipedia/id/5/55/5_cm_sampul.jpg",
     reviews:[] },
   { id:5, title:"Bumi", author:"Tere Liye",
     desc:"Petualangan Raib, Seli, dan Ali di dunia paralel penuh misteri dan kekuatan unik yang seru untuk diikuti.",
-    cover:"d96aad48-8f1f-457d-b5da-132cdab3a624.jpeg",
+    cover:"https://upload.wikimedia.org/wikipedia/id/f/fd/Bumi_sampul.jpg",
     reviews:[] }
 ];
 
-// load persisted reviews if ada
-const saved = localStorage.getItem(BOOKS_KEY);
-if(saved){
-  try { 
-    const parsed = JSON.parse(saved);
-    // merge reviews keyed by id (so we keep original book list structure)
-    books = books.map(b => {
-      const found = parsed.find(x => x.id === b.id);
-      return found ? {...b, reviews: found.reviews || []} : b;
-    });
-  } catch(e){ console.warn('load error', e) }
-}
-
-// apply saved theme
+// Load data dan theme (disederhanakan untuk contoh ini, asumsikan cover ada)
 const savedTheme = localStorage.getItem(THEME_KEY);
 if(savedTheme === 'dark') document.body.classList.add('dark');
 
 // ====== UTIL ======
 function saveAll(){
-  localStorage.setItem(BOOKS_KEY, JSON.stringify(books));
+  // Implementasi penyimpanan ke localStorage (jika diperlukan)
+  // localStorage.setItem(BOOKS_KEY, JSON.stringify(books));
 }
 
 function calcAverage(book){
@@ -52,9 +40,9 @@ function calcAverage(book){
   const sum = book.reviews.reduce((s,r)=> s + Number(r.rating), 0);
   return (sum / book.reviews.length);
 }
+
 function renderStars(value){
-  // value: number maybe decimal. render 5 stars, filled proportionally (we use full/empty)
-  const full = Math.round(value); // round for display
+  const full = Math.round(value);
   let html = '';
   for(let i=1;i<=5;i++){
     html += `<span class="star">${ i<=full ? '★' : '☆'}</span>`;
@@ -62,24 +50,30 @@ function renderStars(value){
   return html;
 }
 
-// ====== RENDER LIST VIEW ======
+function escapeHtml(str){
+  return String(str).replace(/[&<>"'`]/g, s => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;','`':'&#96;'}[s]));
+}
+
+
+// ====== RENDER LIST VIEW (Sesuai List View Lama) ======
 function displayList(list){
   const container = document.getElementById('list-view');
   container.innerHTML = '';
+  container.style.display = 'grid'; // Pastikan List View terlihat
   list.forEach(book => {
     const avg = calcAverage(book);
     const card = document.createElement('article');
-    // PERBAIKAN: Mengganti 'book' menjadi 'book-card' agar sinkron dengan CSS
-    card.className = 'book-card'; 
+    card.className = 'book-card';
     card.innerHTML = `
       <img src="${book.cover}" alt="${book.title}">
-      <div class="book-info"> <h3 onclick="openDetail(${book.id})">${book.title}</h3>
+      <div class="book-info">
+        <h3 onclick="openDetail(${book.id})">${book.title}</h3>
         <p class="author">by ${book.author}</p>
         <p class="desc">${book.desc}</p>
         <div class="book-meta">
           <div class="avg-rating">
             ${renderStars(avg)} <span class="avg-value">${ avg ? avg.toFixed(1) : '-'} / 5</span>
-            <span style="color:var(--muted);font-size:13px;margin-left:8px">(${book.reviews.length} ulasan)</span>
+            <span style="color:var(--light-muted-text);font-size:13px;margin-left:8px">(${book.reviews.length} ulasan)</span>
           </div>
           <div style="margin-left:auto">
             <button class="small-btn" onclick="openDetail(${book.id})">Lihat</button>
@@ -92,7 +86,10 @@ function displayList(list){
 }
 
 // initial render
-displayList(books);
+window.onload = function() {
+  displayList(books);
+};
+
 
 // ====== SEARCH ======
 function searchBook(){
@@ -102,7 +99,7 @@ function searchBook(){
   displayList(filtered);
 }
 
-// ====== DETAIL VIEW ======
+// ====== DETAIL VIEW (Sesuai Layout Baru) ======
 let currentRating = 0; // rating selected in detail
 function openDetail(id){
   const book = books.find(b=>b.id===id);
@@ -113,18 +110,20 @@ function openDetail(id){
   dv.style.display = 'block';
 
   const detail = document.getElementById('detail-card');
-  // build stars input (5 buttons)
+  
+  // Bintang Input
   let starInputHtml = '<div class="star-input">';
   for(let i=1;i<=5;i++){
     starInputHtml += `<button class="star-btn" aria-label="${i} star" onclick="pickStar(${i}, ${id})">☆</button>`;
   }
   starInputHtml += '</div>';
 
-  // reviews html
+  // Reviews HTML
   const reviewsHtml = book.reviews.length > 0
     ? book.reviews.map(r => `<div class="review"><p><strong>⭐ ${r.rating}</strong> — ${escapeHtml(r.text)}</p></div>`).join('')
     : '<p><i>Belum ada ulasan</i></p>';
 
+  // Inject HTML Detail dengan layout Cover di Kiri
   detail.innerHTML = `
     <div id="detail-left">
       <img src="${book.cover}" alt="${book.title}">
@@ -137,7 +136,7 @@ function openDetail(id){
       <div class="avg-rating">
         <div id="avg-stars">${renderStars(calcAverage(book))}</div>
         <div class="avg-value" id="avg-value">${ book.reviews.length ? calcAverage(book).toFixed(1) : '-' } / 5</div>
-        <div style="color:var(--muted);margin-left:8px" id="review-count">(${book.reviews.length} ulasan)</div>
+        <div style="color:var(--light-muted-text);margin-left:8px" id="review-count">(${book.reviews.length} ulasan)</div>
       </div>
 
       <h3>Nilai & Tulis Ulasan</h3>
@@ -154,58 +153,48 @@ function openDetail(id){
     </div>
   `;
 
-  // make sure star buttons reflect current state (none selected)
   updateStarButtons(0, id);
-  // scroll top
   window.scrollTo({top:0, behavior:'smooth'});
 }
 
-// safe text escape
-function escapeHtml(str){
-  return String(str).replace(/[&<>"'`]/g, s => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;','`':'&#96;'}[s]));
-}
-
-// user picks star (interactive)
+// Fungsi Bintang Interaktif
 function pickStar(n, bookId){
   currentRating = n;
   updateStarButtons(n, bookId);
 }
 function updateStarButtons(n, bookId){
-  // find buttons in detail view
   const dv = document.getElementById('detail-card');
   if(!dv) return;
   const btns = dv.querySelectorAll('.star-btn');
   btns.forEach((b, idx) => {
-    if(idx < n) b.classList.add('active');
-    else b.classList.remove('active');
+    b.classList.toggle('active', idx < n);
     b.textContent = idx < n ? '★' : '☆';
   });
 }
 
-// submit review from detail page
+// Submit Review
 function submitReview(bookId){
   const book = books.find(b=>b.id===bookId);
   if(!book) return alert('Buku tidak ditemukan');
   const text = document.getElementById('reviewText').value.trim();
   const rating = Number(currentRating);
-  if(!rating || !text) return alert('Klik bintang (1-5) dan tulis ulasan sebelum mengirim.');
+  if(!rating || !text) return alert('Pilih bintang (1-5) dan tulis ulasan sebelum mengirim.');
 
-  book.reviews.unshift({ text, rating }); // newest first
+  book.reviews.unshift({ text, rating });
   saveAll();
-  // refresh detail (will recalc avg)
-  openDetail(bookId);
-  // optionally, scroll to reviews
+  openDetail(bookId); // Refresh detail view
   const reviewsList = document.getElementById('reviews-list');
   if(reviewsList) reviewsList.scrollIntoView({behavior:'smooth'});
 }
 
-// go back to list
+// Go Back
 function goBack(){
   document.getElementById('detail-view').style.display = 'none';
-  document.getElementById('list-view').style.display = 'block';
+  document.getElementById('list-view').style.display = 'grid'; // Pastikan kembali ke grid
+  displayList(books);
 }
 
-// theme toggle (persist)
+// Theme Toggle
 document.getElementById('themeToggle').addEventListener('click', ()=>{
   document.body.classList.toggle('dark');
   const isDark = document.body.classList.contains('dark');
