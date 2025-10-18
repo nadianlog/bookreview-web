@@ -5,23 +5,23 @@ const THEME_KEY = 'br_theme_v1';
 let books = [
   { id:1, title:"The Alpha Girl’s Guide", author:"Henry Manampiring",
     desc:"Panduan untuk perempuan agar lebih percaya diri, mandiri, dan berani jadi diri sendiri tanpa kehilangan sisi lembutnya.",
-    cover:"https://cdn.gramedia.com/uploads/items/9786022913562_The-Alpha-Girls-Guide-Henry-Manampiring.jpg",
+    cover:"[SE046] The Alpha Girl s Guide (Henry….jpeg",
     reviews:[] },
   { id:2, title:"Loneliness Is My Best Friend", author:"Alvi Syahrin",
     desc:"Kumpulan refleksi tentang kesepian dan bagaimana kesendirian bisa menjadi ruang untuk mengenal diri dan menemukan ketenangan.",
-    cover:"https://cdn.gramedia.com/uploads/items/9786233461024_loneliness_is_my_best_friend.jpg",
+    cover:"8933c53e-2762-42db-b04d-cd95a0d45d72.jpeg",
     reviews:[] },
   { id:3, title:"Laut Bercerita", author:"Leila S. Chudori",
     desc:"Kisah menyentuh tentang aktivis yang hilang di masa Orde Baru, menggambarkan perjuangan, kehilangan, dan kemanusiaan.",
-    cover:"https://cdn.gramedia.com/uploads/items/9786024246941_Laut_Bercerita.jpg",
+    cover:"The Sea Speaks His Name (English Version).jpeg",
     reviews:[] },
   { id:4, title:"Negeri 5 Menara", author:"Ahmad Fuadi",
     desc:"Kisah enam santri dengan mimpi besar dan semangat Man Jadda Wajada yang menginspirasi banyak pembaca.",
-    cover:"https://upload.wikimedia.org/wikipedia/id/4/48/Negeri_5_Menara_cover.jpg",
+    cover:"Negeri 5 Menara.jpeg",
     reviews:[] },
   { id:5, title:"Bumi", author:"Tere Liye",
     desc:"Petualangan Raib, Seli, dan Ali di dunia paralel penuh misteri dan kekuatan unik yang seru untuk diikuti.",
-    cover:"https://upload.wikimedia.org/wikipedia/id/f/fd/Bumi_sampul.jpg",
+    cover:"d96aad48-8f1f-457d-b5da-132cdab3a624.jpeg",
     reviews:[] }
 ];
 
