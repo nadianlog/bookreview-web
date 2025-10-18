@@ -1,16 +1,37 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
 :root{
-  --primary:#a5b4fc;   /* ungu pastel */
-  --primary-600:#6c63ff;
-  --bg:#ffffff;
-  --text:#222;
-  --card:#ffffff;
-  --muted:#666;
-  --accent:#6c63ff;
-  --review-bg:#eef0ff;
+  light {
+  background-color: #f9f8ff;
+  color: #222;
 }
 
+.light .book-card {
+  background-color: #f0eeff;
+  color: #222;
+}
+
+.light h2, 
+.light h3,
+.light p,
+.light .author {
+  color: #333 !important;
+}
+
+.light .review-box {
+  background-color: #f4f2ff;
+  color: #222;
+}
+
+.light textarea {
+  background-color: #fff;
+  color: #222;
+}
+
+.light .star {
+  color: #ffb400;
+}
+}
 /* --- Base --- */
 *{box-sizing:border-box}
 html,body{height:100%}
@@ -128,14 +149,36 @@ footer{max-width:1100px;margin:26px auto;text-align:center;color:var(--muted);fo
 
 /* Dark theme (toggle by adding .dark on body) */
 body.dark{
-  --bg:#111217;
-  --text:#eaeef6;
-  --card:#16161a;
-  --muted:#bfc4d9;
-  --primary-600:#9a8cff;
-  --primary:#bdb7ff;
-  --review-bg:#22212a;
+  background-color: #0e0e16;
+  color: #f3f1ff;
 }
+
+body.dark .book-card {
+  background-color: #1a1a25;
+  color: #f3f1ff;
+}
+
+body.dark h2, 
+body.dark h3,
+body.dark p,
+body.dark .author {
+  color: #f3f1ff !important;
+}
+
+body.dark .review-box {
+  background-color: #2b2b3a;
+  color: #fff;
+}
+
+body.dark textarea {
+  background-color: #2b2b3a;
+  color: #fff;
+}
+
+body.dark .star {
+  color: #ffd369;
+}
+
 body.dark header{background:linear-gradient(90deg,var(--primary),var(--primary-600))}
 body.dark #searchInput{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.06);color:var(--text)}
 body.dark .book-details p.author, body.dark #detail-right p.author{color:var(--primary) !important}
