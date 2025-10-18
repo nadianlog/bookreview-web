@@ -4,7 +4,7 @@ const books = [
     id: 1, 
     title: "Laut Bercerita", 
     author: "Lelia S. Chudori",
-    desc: "Perjalanan anak-anak Belitung dalam mengejar pendidikan di tengah keterbatasan.",
+    desc: "Kisah menyentuh tentang aktivis yang hilang di masa Orde Baru, menggambarkan perjuangan, kehilangan, dan kemanusiaan.",
     cover: "The Sea Speaks His Name (English Version).jpeg",
     reviews: []
   },
@@ -13,23 +13,23 @@ const books = [
     title: "Negeri 5 Menara", 
     author: "Ahmad Fuadi",
     desc: "Kisah enam santri dengan mimpi besar dan semangat Man Jadda Wajada.",
-    cover: "https://upload.wikimedia.org/wikipedia/id/4/48/Negeri_5_Menara_cover.jpg",
+    cover: "Negeri 5 Menara.jpeg",
     reviews: []
   },
   { 
     id: 3, 
-    title: "Dilan 1990", 
-    author: "Pidi Baiq",
-    desc: "Kisah cinta remaja Bandung yang ringan dan penuh kenangan SMA.",
-    cover: "https://upload.wikimedia.org/wikipedia/id/1/1f/Dilan_1990_sampul.jpg",
+    title: "Lonelinnes is my best friend", 
+    author: "Alvi Syahrin",
+    desc: "Kumpulan refleksi tentang kesepian dan bagaimana kesendirian bisa menjadi ruang untuk mengenal diri dan menemukan ketenangan.",
+    cover: "8933c53e-2762-42db-b04d-cd95a0d45d72.jpeg",
     reviews: []
   },
   { 
     id: 4, 
-    title: "5 CM", 
-    author: "Donny Dhirgantoro",
-    desc: "Perjalanan lima sahabat menaklukkan Gunung Semeru untuk meraih mimpi.",
-    cover: "https://upload.wikimedia.org/wikipedia/id/5/55/5_cm_sampul.jpg",
+    title: "The Alpha Girls Guide", 
+    author: "Henry Manampiring",
+    desc: "Panduan untuk perempuan agar lebih percaya diri, mandiri, dan berani jadi diri sendiri tanpa kehilangan sisi lembutnya.",
+    cover: "[SE046] The Alpha Girl s Guide (Henry….jpeg",
     reviews: []
   },
   { 
@@ -37,7 +37,7 @@ const books = [
     title: "Bumi", 
     author: "Tere Liye",
     desc: "Petualangan Raib, Seli, dan Ali di dunia paralel dengan kekuatan unik.",
-    cover: "https://upload.wikimedia.org/wikipedia/id/f/fd/Bumi_sampul.jpg",
+    cover: "d96aad48-8f1f-457d-b5da-132cdab3a624.jpeg",
     reviews: []
   }
 ];
