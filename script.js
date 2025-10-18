@@ -5,23 +5,23 @@ const THEME_KEY = 'br_theme_v1';
 let books = [
   { id:1, title:"The Alpha Girl’s Guide", author:"Henry Manampiring",
     desc:"Panduan untuk perempuan agar lebih percaya diri, mandiri, dan berani jadi diri sendiri tanpa kehilangan sisi lembutnya.",
-    cover:"https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1348867331i/1524183.jpg",
+    cover:"TAGG.JPEG.jpeg",
     reviews:[] },
   { id:2, title:"Loneliness Is My Best Friend", author:"Alvi Syahrin",
     desc:"Kumpulan refleksi tentang kesepian dan bagaimana kesendirian bisa menjadi ruang untuk mengenal diri dan menemukan ketenangan.",
-    cover:"https://upload.wikimedia.org/wikipedia/id/4/48/Negeri_5_Menara_cover.jpg",
+    cover:"LONEE.JPEG.jpeg",
     reviews:[] },
   { id:3, title:"Laut Bercerita", author:"Leila S. Chudori",
     desc:"Kisah menyentuh tentang aktivis yang hilang di masa Orde Baru, menggambarkan perjuangan, kehilangan, dan kemanusiaan.",
-    cover:"https://upload.wikimedia.org/wikipedia/id/1/1f/Dilan_1990_sampul.jpg",
+    cover:"LB.JPEG.jpeg",
     reviews:[] },
   { id:4, title:"Negeri 5 Menara", author:"Ahmad Fuadi",
     desc:"Kisah enam santri dengan mimpi besar dan semangat Man Jadda Wajada yang menginspirasi banyak pembaca.",
-    cover:"https://upload.wikimedia.org/wikipedia/id/5/55/5_cm_sampul.jpg",
+    cover:"Negeri 5 Menara.jpeg",
     reviews:[] },
   { id:5, title:"Bumi", author:"Tere Liye",
     desc:"Petualangan Raib, Seli, dan Ali di dunia paralel penuh misteri dan kekuatan unik yang seru untuk diikuti.",
-    cover:"https://upload.wikimedia.org/wikipedia/id/f/fd/Bumi_sampul.jpg",
+    cover:"BUMI.JPEG.jpeg",
     reviews:[] }
 ];
 
