@@ -31,6 +31,16 @@ header p {
   font-size: 0.95rem;
 }
 
+/* FIX: Gaya untuk menata Brand, Search, dan Toggle di Header */
+.header-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  gap: 1rem; 
+}
+
 header input {
   background: rgba(255, 255, 255, 0.85);
   border: none;
@@ -40,6 +50,12 @@ header input {
   font-family: inherit;
 }
 
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Jarak antara input dan button toggle */
+}
+
 header .theme-toggle {
   margin-left: 10px;
   font-size: 1.4rem;
@@ -47,7 +63,7 @@ header .theme-toggle {
 }
 
 /* ====== KARTU BUKU ====== */
-.book-card {
+.book-card { /* Digunakan di JS */
   background-color: #f0ecff;
   border-radius: 16px;
   padding: 1rem 1.5rem;
@@ -60,12 +76,14 @@ header .theme-toggle {
 }
 
 .book-card img {
+  /* FIX: Agar cover tidak terlalu besar di halaman utama */
   width: 150px;
+  height: auto; 
   border-radius: 10px;
   object-fit: cover;
 }
 
-.book-info h2 {
+.book-info h2 { /* Digunakan di JS */
   color: #6c63ff;
   margin: 0;
 }
@@ -123,30 +141,7 @@ body.dark button {
   background-color: #6c63ff;
 }
 
-/* ====== RESPONSIF HP ====== */
-@media (max-width: 768px) {
-  .book-card {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    width: 90%;
-  }
-
-  .book-card img {
-    width: 120px;
-  }
-
-  header input {
-    width: 200px;
-  }
-}
-/* ===== FIX COVER TERLALU BESAR DI HALAMAN UTAMA ===== */
-.book-card img {
-  width: 150px;
-  height: auto;
-  border-radius: 10px;
-  object-fit: cover;
-}
+/* ====== DETAIL VIEW STYLES (Tambahan) ====== */
 
 /* Cover jadi besar HANYA di halaman detail */
 .detail-view img {
@@ -156,7 +151,8 @@ body.dark button {
   display: block;
   margin: 0 auto 1rem;
 }
-/* ===== GAYA UNTUK TULISAN "Tulis Ulasan" ===== */
+
+/* GAYA UNTUK TULISAN "Tulis Ulasan" */
 .review-form h3,
 .review-section h3 {
   font-family: "Poppins", sans-serif;
@@ -172,4 +168,33 @@ body.dark button {
 .review-form h3:hover,
 .review-section h3:hover {
   color: var(--accent-color);
+}
+
+/* ====== RESPONSIF HP ====== */
+@media (max-width: 768px) {
+  
+  .header-inner {
+    flex-direction: column; /* Mengubah tata letak header jadi vertikal di HP */
+    text-align: center;
+  }
+  
+  .controls {
+    margin-top: 10px; /* Jarak dari judul */
+    justify-content: center; /* Rata tengah controls */
+  }
+  
+  .book-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 90%;
+  }
+
+  .book-card img {
+    width: 120px;
+  }
+
+  header input {
+    width: 200px;
+  }
 }
