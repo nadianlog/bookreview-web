@@ -26,4 +26,176 @@ body {
 header {
   background: linear-gradient(135deg, #c7b8ff, #a5b4fc);
   color: #fff;
-  box-shadow: 0 2
+  box-shadow: 0 2px 8px rgba(108, 99, 255, 0.25);
+  padding: 1rem 2rem;
+  border-radius: 0 0 20px 20px;
+  transition: background 0.4s ease, color 0.4s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+header h1 {
+  color: #ffffff;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  margin: 0;
+}
+
+header p {
+  color: #f4f2ff;
+  font-weight: 400;
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+/* ===== SEARCH DAN TOGGLE ===== */
+header input {
+  background: rgba(255, 255, 255, 0.25);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  outline: none;
+}
+
+header input::placeholder {
+  color: #f8f7ff;
+}
+
+header .theme-toggle {
+  color: #fff;
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+/* ===== CARD BUKU ===== */
+.book-card {
+  background-color: var(--card);
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(108,99,255,0.1);
+  padding: 1rem;
+  margin: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.book-card:hover {
+  transform: translateY(-5px);
+}
+
+/* ===== TEKS & WARNA ===== */
+h2 {
+  color: #6c63ff;
+  margin-bottom: 0.3rem;
+}
+
+.author {
+  color: #9a8dfd;
+  font-style: italic;
+}
+
+p {
+  color: #333;
+}
+
+/* ===== TOMBOL ===== */
+button {
+  background-color: #a5b4fc;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.4rem 1rem;
+  font-weight: 500;
+  transition: background 0.3s ease, transform 0.2s;
+}
+
+button:hover {
+  background-color: #6c63ff;
+  transform: scale(1.05);
+}
+
+/* ===== FORM ULASAN ===== */
+textarea {
+  width: 100%;
+  min-height: 80px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  padding: 0.5rem;
+  resize: vertical;
+  font-family: 'Poppins', sans-serif;
+  transition: background 0.3s ease;
+}
+
+/* ===== RATING BINTANG ===== */
+.star {
+  font-size: 1.4rem;
+  color: #ffb400;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.star:hover {
+  transform: scale(1.2);
+}
+
+/* ===== REVIEW BOX ===== */
+.review-box {
+  background-color: var(--review-bg);
+  border-radius: 12px;
+  padding: 1rem;
+  margin-top: 1rem;
+}
+
+/* ===== DARK MODE ===== */
+body.dark {
+  background-color: #0e0e16;
+  color: #f3f1ff;
+}
+
+body.dark header {
+  background: linear-gradient(135deg, #6c63ff, #4e46b4);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+body.dark h2 {
+  color: #bdb4ff;
+}
+
+body.dark .author {
+  color: #d0caff;
+}
+
+body.dark p {
+  color: #e6e6f8;
+}
+
+body.dark button {
+  background-color: #6c63ff;
+  color: #fff;
+}
+
+body.dark button:hover {
+  background-color: #817aff;
+}
+
+body.dark input,
+body.dark textarea {
+  background-color: #2b2b3a;
+  color: #fff;
+  border: 1px solid #6c63ff;
+}
+
+body.dark .book-card {
+  background-color: #1a1a25;
+}
+
+body.dark .review-box {
+  background-color: #2b2b3a;
+  color: #fff;
+}
+
+body.dark .star {
+  color: #ffd369;
+}
