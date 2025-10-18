@@ -69,11 +69,11 @@ function displayList(list){
   list.forEach(book => {
     const avg = calcAverage(book);
     const card = document.createElement('article');
-    card.className = 'book';
+    // PERBAIKAN: Mengganti 'book' menjadi 'book-card' agar sinkron dengan CSS
+    card.className = 'book-card'; 
     card.innerHTML = `
       <img src="${book.cover}" alt="${book.title}">
-      <div class="book-details">
-        <h3 onclick="openDetail(${book.id})">${book.title}</h3>
+      <div class="book-info"> <h3 onclick="openDetail(${book.id})">${book.title}</h3>
         <p class="author">by ${book.author}</p>
         <p class="desc">${book.desc}</p>
         <div class="book-meta">
