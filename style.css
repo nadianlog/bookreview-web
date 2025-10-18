@@ -1,185 +1,165 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
 
 /* DEFINISI VARIABEL WARNA */
 :root {
   /* TEMA TERANG */
   --light-bg: #ffffff;
-  --light-text: #222;       
-  --light-header-bg: #a5b4fc; 
-  --light-card-bg: #fff;    
+  --light-text: #333;       
+  --light-header-bg: linear-gradient(135deg, #a996ff, #6c63ff);
+  --light-header-text: #fff;
+  --light-card-bg: #f0ecff;    
   --light-accent: #6c63ff;  
-  --light-muted-text: #555; 
-  --light-review-bg: #eef0ff; 
+  --light-muted-text: #8b80ff; 
+  --light-input-bg: rgba(255, 255, 255, 0.85);
   
   /* TEMA GELAP */
-  --dark-bg: #1f1f1f;
-  --dark-text: #f0f0f0;
-  --dark-header-bg: #333;
-  --dark-card-bg: #2a2a2a;
-  --dark-accent: #a5b4fc;  
-  --dark-muted-text: #bbb;
-  --dark-review-bg: #3a3a3a;
+  --dark-bg: #0e0e16;
+  --dark-text: #eee;
+  --dark-header-bg: linear-gradient(135deg, #4e46b4, #6c63ff);
+  --dark-header-text: #eee;
+  --dark-card-bg: #1c1b25;
+  --dark-accent: #b9b3ff;  
+  --dark-muted-text: #d2caff;
+  --dark-input-bg: #3a3a3a;
 }
 
-/* ====== DASAR & TEMA KONTRAST (Berlaku Global) ====== */
+/* ====== DASAR & TEMA KONTRAST (Global) ====== */
 body {
   font-family: 'Poppins', sans-serif;
-  background-color: var(--light-bg); 
-  color: var(--light-text);          
+  background-color: var(--light-bg);
+  color: var(--light-text);
   margin: 0;
   padding: 0;
-  transition: background-color 0.3s, color 0.3s;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* HEADER */
 header {
+  background: var(--light-header-bg);
+  color: var(--light-header-text);
+  padding: 1rem 2rem;
+  border-radius: 0 0 20px 20px;
   text-align: center;
-  background-color: var(--light-header-bg); 
-  color: var(--light-text);
-  padding: 25px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 10px rgba(108, 99, 255, 0.25);
+}
+
+.header-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
 }
 
 header h1, header p {
-    color: var(--light-text); /* Pastikan judul/teks header ikut kontras */
+    color: var(--light-header-text);
 }
 
-#searchInput {
-  width: 60%;
-  padding: 10px;
-  margin-top: 10px;
-  border-radius: 8px;
-  border: 1px solid #aaa;
-  font-family: 'Poppins', sans-serif; /* Font untuk input */
-  background: var(--light-card-bg);
+header input {
+  background: var(--light-input-bg);
   color: var(--light-text);
-}
-
-#themeToggle {
-  margin-left: 10px;
-  background: transparent;
   border: none;
-  cursor: pointer;
-  font-size: 1.5em;
-  color: var(--light-text);
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  width: 240px;
+  font-family: inherit;
+  transition: background 0.3s, color 0.3s;
 }
 
-/* CARD BUKU (LIST VIEW) */
-.book {
+.controls {
   display: flex;
   align-items: center;
-  gap: 20px;
-  background: var(--light-card-bg); 
-  margin: 20px auto;
-  padding: 20px;
-  border-radius: 12px;
+  gap: 10px;
+}
+
+/* ====== KARTU BUKU (LIST VIEW) ====== */
+.book-card { /* Digunakan di JS */
+  background-color: var(--light-card-bg);
+  color: var(--light-text);
+  border-radius: 16px;
+  padding: 1rem 1.5rem;
+  margin: 1.5rem auto;
   width: 80%;
   max-width: 900px;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.05);
-  transition: 0.3s;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: background 0.3s, color 0.3s;
 }
 
-.book img {
-  width: 100px; /* Cover kecil untuk list view */
-  height: 150px;
+.book-card img {
+  width: 150px; /* Cover List View Kecil */
+  height: auto;
+  border-radius: 10px;
   object-fit: cover;
-  border-radius: 8px;
 }
 
-.book-details h3 {
-  color: var(--light-accent); 
+.book-info h3 {
+  color: var(--light-accent);
+  margin: 0;
 }
 
-.book-details p.author {
-  font-style: italic;
-  font-size: 14px;
+.book-info .author {
   color: var(--light-muted-text);
+  font-style: italic;
+  margin: 4px 0;
 }
 
-/* REVIEW LIST VIEW */
-.review {
-  background: var(--light-review-bg);
-  padding: 10px;
-  border-radius: 6px;
-  margin-top: 10px;
-}
-.review p, .review small {
-    color: var(--light-text);
-}
-
-
-/* BUTTON */
+/* Tombol List View dan Detail */
 button {
-  background-color: var(--light-header-bg);
-  color: var(--light-text);
-  padding: 10px 20px;
+  background-color: var(--light-accent);
+  color: white;
   border: none;
   border-radius: 8px;
+  padding: 0.4rem 1rem;
   cursor: pointer;
-  font-size: 14px;
-  transition: 0.3s;
+  font-weight: 500;
+  transition: background 0.3s ease;
 }
 
-
-/* FOOTER */
-footer {
-  text-align: center;
-  padding: 20px;
-  font-size: 14px;
-  color: var(--light-muted-text);
+button:hover {
+  background-color: #5b55e3; /* Slightly darker accent */
 }
 
-/* 🌙 --- Tema Gelap --- */
+/* ====== DARK MODE STYLES ====== */
 body.dark {
   background-color: var(--dark-bg);
   color: var(--dark-text);
 }
 
 body.dark header {
-  background-color: var(--dark-header-bg);
-}
-body.dark h1, body.dark p, body.dark footer, body.dark #themeToggle {
-    color: var(--dark-text); /* Semua teks utama */
+  background: var(--dark-header-bg);
+  color: var(--dark-header-text);
 }
 
-body.dark #searchInput {
-    background: #3a3a3a;
-    border-color: #555;
+body.dark header input {
+    background: var(--dark-input-bg);
     color: var(--dark-text);
 }
 
-body.dark .book {
+body.dark .book-card {
   background-color: var(--dark-card-bg);
-  border: 1px solid #444;
+  color: var(--dark-text);
 }
 
-body.dark .book-details h3 {
-    color: var(--dark-accent); 
+body.dark .book-info h3 {
+  color: var(--dark-accent);
 }
 
-body.dark .book-details p.author {
-    color: var(--dark-muted-text); 
-}
-
-body.dark .review {
-  background: var(--dark-review-bg);
-}
-
-body.dark .review p, body.dark .review small {
-    color: var(--dark-text);
+body.dark .book-info .author {
+  color: var(--dark-muted-text);
 }
 
 body.dark button {
-  background-color: #555;
-  color: #eee;
+  background-color: var(--dark-accent);
+}
+body.dark button:hover {
+    background-color: #8b80ff;
 }
 
-body.dark footer {
-    color: var(--dark-muted-text);
-}
-
-/* ====== GAYA DETAIL VIEW KHUSUS ====== */
-
+/* ====== GAYA DETAIL VIEW (Setelah Klik) ====== */
 #detail-view {
     max-width: 900px;
     margin: 20px auto;
@@ -187,95 +167,101 @@ body.dark footer {
 }
 
 #detail-card {
-    display: flex; /* Layout Cover + Detail */
+    display: flex; /* LAYOUT COVER DI PINGGIR */
     gap: 30px;
     margin-top: 15px;
     padding: 25px;
-    border-radius: 12px;
+    border-radius: 16px;
     background: var(--light-card-bg); 
-    box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
 body.dark #detail-card {
     background: var(--dark-card-bg);
-    box-shadow: none;
 }
 
-/* Area Cover (Cover besar di pinggir) */
-#detail-cover-area {
-    flex-shrink: 0; 
-    width: 200px; 
+#detail-left { /* Area Cover */
+    flex-shrink: 0; /* Penting agar cover tidak mengecil */
+    width: 280px; /* Cover Detail Besar */
     text-align: center;
 }
 
-#detail-cover-area img {
+#detail-left img {
     width: 100%;
     height: auto;
-    max-height: 300px;
+    max-height: 400px;
     object-fit: cover;
-    border-radius: 8px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-/* Area Detail dan Ulasan */
-#detail-content-area {
+#detail-right { /* Area Detail & Ulasan */
     flex-grow: 1;
+    text-align: left;
 }
 
-#detail-content-area h2 {
-    color: var(--light-accent);
-    margin-top: 0;
-}
-body.dark #detail-content-area h2 {
-    color: var(--dark-accent);
-}
-
-/* Gaya untuk form ulasan di DETAIL VIEW (Memastikan Font Poppins & Kontras) */
-#reviewText, #rating {
+/* Textarea dan Input di Detail View */
+#reviewText {
     font-family: 'Poppins', sans-serif;
     width: 98%;
-    box-sizing: border-box; 
+    box-sizing: border-box;
     min-height: 80px;
     padding: 10px;
     border-radius: 8px;
     border: 1px solid #ccc;
-    background: var(--light-bg);
+    background: var(--light-card-bg);
     color: var(--light-text);
     margin-bottom: 10px;
     resize: vertical;
 }
-#rating {
-    min-height: unset;
-    height: auto;
-    width: 100px;
-    margin-right: 10px;
-}
 
-body.dark #reviewText, body.dark #rating {
-    background: #3a3a3a;
+body.dark #reviewText {
+    background: var(--dark-input-bg);
     border-color: #555;
     color: var(--dark-text);
 }
 
-/* Responsif untuk Detail View */
+/* Bintang Rating */
+.star-input .star-btn {
+    background: none;
+    color: #ccc;
+    font-size: 1.5rem;
+    padding: 0 5px;
+    cursor: pointer;
+}
+.star-input .star-btn.active {
+    color: gold;
+}
+/* Review List di Detail */
+.review p {
+    background: #eef0ff;
+    padding: 10px;
+    border-radius: 6px;
+    margin-top: 5px;
+    color: var(--light-text);
+}
+body.dark .review p {
+    background: #3a3a3a;
+    color: var(--dark-text);
+}
+
+/* Responsif HP */
 @media (max-width: 768px) {
-    .book {
+    .header-inner {
+        flex-direction: column;
+    }
+    .book-card {
         flex-direction: column;
         align-items: center;
         text-align: center;
+        width: 90%;
     }
-    .book img {
-        width: 120px; /* Cover di list view agak membesar */
-        height: auto;
-    }
-    
     #detail-card {
         flex-direction: column;
         align-items: center;
         gap: 15px;
-        padding: 15px;
     }
-    #detail-cover-area {
-        width: 80%;
+    #detail-left {
+        width: 70%;
     }
 }
