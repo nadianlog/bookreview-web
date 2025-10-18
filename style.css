@@ -132,3 +132,7 @@ body.dark button {
 body.dark button:hover {
   background-color: #777;
 }
+/* Warna penulis biar jelas di dark mode */
+body.dark .book-details p.author {
+  color: #ccc;  /* abu muda biar kontras di background gelap */
+}
