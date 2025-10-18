@@ -1,29 +1,40 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>📚 Ulasan Buku</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Ulasan Buku — BookReview</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header>
-    <h1>📚 Ulasan Buku</h1>
-    <input type="text" id="searchInput" placeholder="Cari judul buku..." onkeyup="searchBook()">
-    <button id="themeToggle" title="Ganti tema">🌙</button>
+    <div class="header-inner">
+      <div class="brand">
+        <h1>📚 BookReview</h1>
+        <p class="sub">Baca ulasan — pilih buku — tulis opinimu</p>
+      </div>
+
+      <div class="controls">
+        <input id="searchInput" type="search" placeholder="Cari judul buku..." oninput="searchBook()" />
+        <button id="themeToggle" title="Ganti tema">🌙</button>
+      </div>
+    </div>
   </header>
 
-  <section id="book-container"></section>
+  <!-- LIST VIEW -->
+  <main id="list-view" class="container"></main>
 
-  <section id="review-form" style="display: none;">
-    <h2>Tulis Ulasan untuk <span id="selectedBookTitle"></span></h2>
-    <textarea id="reviewText" placeholder="Tulis ulasanmu di sini..."></textarea>
-    <input type="number" id="rating" min="1" max="5" placeholder="Rating (1-5)">
-    <button onclick="addReview()">Kirim</button>
+  <!-- DETAIL (full screen single-book view) -->
+  <section id="detail-view" class="container" style="display:none;">
+    <button id="backBtn" class="link-btn" onclick="goBack()">⬅️ Kembali</button>
+
+    <div id="detail-card">
+      <!-- content injected by JS -->
+    </div>
   </section>
 
   <footer>
-    <p>Website ini dibuat untuk keperluan pembelajaran. Semua ulasan adalah opini pengguna.</p>
+    <small>Project pembelajaran — semua ulasan user-generated. &middot; Theme &copy; kamu</small>
   </footer>
 
   <script src="script.js"></script>
