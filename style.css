@@ -140,3 +140,36 @@ body.dark button {
     width: 200px;
   }
 }
+/* ===== FIX COVER TERLALU BESAR DI HALAMAN UTAMA ===== */
+.book-card img {
+  width: 150px;
+  height: auto;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+/* Cover jadi besar HANYA di halaman detail */
+.detail-view img {
+  width: 280px;
+  max-width: 100%;
+  border-radius: 10px;
+  display: block;
+  margin: 0 auto 1rem;
+}
+/* ===== GAYA UNTUK TULISAN "Tulis Ulasan" ===== */
+.review-form h3,
+.review-section h3 {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--text-color);
+  text-align: left;
+  margin-bottom: 0.8rem;
+  transition: color 0.3s ease;
+}
+
+/* efek hover lucu dikit biar interaktif */
+.review-form h3:hover,
+.review-section h3:hover {
+  color: var(--accent-color);
+}
